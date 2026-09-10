@@ -24,14 +24,18 @@
       "farmerId": "FR-AP-2026-000124",
       "name": "Prudhvi Pavan",
       "mobile": "9125421544",
-      "district": "Guntur",
+      "district": "Vizianagaram",
       "state": "Andhra Pradesh",
       "landArea": "5.5",
       "crops": "Paddy (Grade A), Cotton",
-      "bankAccountRef": "SBI (A/C: ****5512)",
+      "bankAccountRef": "State Bank of India (A/C: ****9104)",
       "ifscCode": "SBIN0001234",
       "accountHolderName": "Prudhvi Pavan",
-      "verificationStatus": "VERIFIED"
+      "verificationStatus": "VERIFIED",
+      "address": "Vizianagaram, Andhra Pradesh",
+      "accountNumber": "501004829104",
+      "bankName": "State Bank of India",
+      "updatedAt": "2026-09-10T20:04:59.309Z"
     },
     {
       "farmerId": "FR-AP-2026-000125",
