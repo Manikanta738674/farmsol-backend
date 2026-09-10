@@ -4,12 +4,19 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "npm --prefix shared install && npm --prefix shared run build && tsc",
+    "build": "npm --prefix shared install --include=dev && npm --prefix shared run build && tsc",
     "start": "node dist/server.js",
     "seed": "ts-node-dev --transpile-only src/seeds/seed.ts"
   },
   "dependencies": {
     "@smartfarmer/shared": "file:./shared",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.12.12",
+    "@types/qrcode": "^1.5.5",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -19,17 +26,10 @@
     "morgan": "^1.10.0",
     "qrcode": "^1.5.3",
     "socket.io": "^4.7.5",
+    "typescript": "^5.4.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/jsonwebtoken": "^9.0.6",
-    "@types/morgan": "^1.9.9",
-    "@types/node": "^20.12.12",
-    "@types/qrcode": "^1.5.5",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.4.5"
+    "ts-node-dev": "^2.0.0"
   }
 }
