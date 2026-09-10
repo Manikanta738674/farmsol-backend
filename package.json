@@ -4,7 +4,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "npm --prefix shared run build && tsc",
+    "build": "npm --prefix shared install && npm --prefix shared run build && tsc",
     "start": "node dist/server.js",
     "seed": "ts-node-dev --transpile-only src/seeds/seed.ts"
   },

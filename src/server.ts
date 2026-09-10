@@ -23,7 +23,7 @@ const server = http.createServer(app);
 initSocket(server, ENV.CORS_ORIGIN);
 
 // Global Middlewares
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 if (ENV.NODE_ENV !== 'test') {
@@ -43,7 +43,12 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+import { persistentStore } from './services/persistentStore';
+
 // API Routes
+app.get('/api/v1/centres', (req, res) => {
+  res.json({ success: true, data: persistentStore.getCollection('centres') });
+});
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/farmer', farmerRoutes);
 app.use('/api/v1/bookings', bookingRoutes);

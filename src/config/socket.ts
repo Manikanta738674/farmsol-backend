@@ -6,7 +6,7 @@ let io: SocketIOServer | null = null;
 export const initSocket = (server: HTTPServer, corsOrigin: string = '*'): SocketIOServer => {
   io = new SocketIOServer(server, {
     cors: {
-      origin: corsOrigin,
+      origin: corsOrigin === '*' ? true : corsOrigin,
       methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
       credentials: true
     }
@@ -31,6 +31,37 @@ export const initSocket = (server: HTTPServer, corsOrigin: string = '*'): Socket
     socket.on('join:booking', (bookingId: string) => {
       socket.join(`booking:${bookingId}`);
       console.log(`[Socket] ${socket.id} joined booking:${bookingId}`);
+    });
+
+    // Join room for Admin dashboard
+    socket.on('join:admin', () => {
+      socket.join('admin:dashboard');
+      console.log(`[Socket] ${socket.id} joined admin:dashboard`);
+    });
+
+    // Cross-Portal Event Relays
+    socket.on('payment:update', (data: any) => {
+      socket.broadcast.emit('payment:update', data);
+    });
+
+    socket.on('queue:update', (data: any) => {
+      socket.broadcast.emit('queue:update', data);
+    });
+
+    socket.on('sms:notification', (data: any) => {
+      socket.broadcast.emit('sms:notification', data);
+    });
+
+    socket.on('msp:update', (data: any) => {
+      socket.broadcast.emit('msp:update', data);
+    });
+
+    socket.on('gate:arrival', (data: any) => {
+      socket.broadcast.emit('gate:arrival', data);
+    });
+
+    socket.on('booking:created', (data: any) => {
+      socket.broadcast.emit('booking:created', data);
     });
 
     socket.on('disconnect', () => {
